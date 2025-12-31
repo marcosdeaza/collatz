@@ -1,6 +1,6 @@
 # Práctica: La Conjetura de Collatz (3n + 1)
 
-Este repositorio contiene una solución sencilla en C++ para resolver el problema de la **Conjetura de Collatz**, implementada utilizando lógica básica y sin librerías externas (solo `iostream`).
+Este repositorio contiene una solución sencilla en C++ para resolver el problema de la **Conjetura de Collatz**, implementada utilizando lógica básica y sin librerías externas (solo `iostream`), si quereis ahorrar tiempo recomiendo probar guardando valores con funciones del módulo vector.
 
 ## 📝 Enunciado del Problema
 
