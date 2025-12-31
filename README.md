@@ -28,80 +28,62 @@ Si introducimos el número `3`, la secuencia generada es:
 * **Iteraciones:** 7 (pasos realizados).
 * **Últimos 5 números:** 16, 8, 4, 2, 1.
 
-## 💻 Código Fuente (Solución)
+## 🧠 Pseudocódigo
 
-El código ha sido escrito en C++ estándar, utilizando arrays estáticos para simular el comportamiento de un vector de forma sencilla.
+A continuación se describe la lógica del algoritmo diseñado:
 
-```cpp
-#include <iostream>
-using namespace std;
+```text
+INICIO
+    // Declaración de variables
+    DEFINIR numero ENTERO
+    DEFINIR lista COMO ARRAY[1000] DE ENTEROS
+    DEFINIR cantidad = 0
+    DEFINIR iteraciones = 0
 
-int main() {
-    int numero;
+    // 1. Entrada y Validación
+    ESCRIBIR "Introduce un número entero positivo: "
+    LEER numero
 
-    // 1. Pedir el número al usuario y validar que sea positivo
-    cout << "Introduce un numero entero positivo: ";
-    cin >> numero;
+    MIENTRAS numero <= 0 HACER
+        ESCRIBIR "El número debe ser mayor que 0. Inténtalo de nuevo: "
+        LEER numero
+    FIN MIENTRAS
 
-    // Si es negativo o 0, seguimos pidiendo hasta que sea válido
-    while (numero <= 0) {
-        cout << "El numero debe ser mayor que 0. Intentalo de nuevo: ";
-        cin >> numero;
-    }
+    // Guardar el número inicial
+    lista[cantidad] = numero
+    cantidad = cantidad + 1
 
-    // Usamos un array estático para guardar el historial
-    // Suponemos un tamaño máximo de 1000 iteraciones para este ejercicio básico
-    int lista[1000]; 
-    int cantidad = 0; // Índice para saber cuántos números llevamos
+    // 2. Cálculo de la secuencia (Bucle hasta llegar a 1)
+    MIENTRAS numero != 1 HACER
+        
+        SI (numero MOD 2 == 0) ENTONCES
+            // Es par
+            numero = numero / 2
+        SINO
+            // Es impar
+            numero = (3 * numero) + 1
+        FIN SI
 
-    // Guardamos el número inicial en la lista
-    lista[cantidad] = numero;
-    cantidad++; 
+        // Guardar en la lista y aumentar contadores
+        lista[cantidad] = numero
+        cantidad = cantidad + 1
+        iteraciones = iteraciones + 1
+        
+    FIN MIENTRAS
 
-    int iteraciones = 0;
+    // 3. Salida de datos
+    ESCRIBIR "Iteraciones totales: ", iteraciones
 
-    // 2. Aplicar la lógica de la Conjetura de Collatz
-    // El bucle para cuando llegamos a 1 (inicio del patrón 4, 2, 1)
-    while (numero != 1) {
-        // Control de seguridad para no desbordar el array
-        if (cantidad >= 1000) {
-            cout << "La secuencia es demasiado larga." << endl;
-            break;
-        }
+    // Calcular desde dónde empezar a imprimir (últimos 5)
+    DEFINIR inicio = cantidad - 5
 
-        if (numero % 2 == 0) {
-            // Si es par
-            numero = numero / 2;
-        } else {
-            // Si es impar
-            numero = 3 * numero + 1;
-        }
+    SI inicio < 0 ENTONCES
+        inicio = 0
+    FIN SI
 
-        // Guardamos el nuevo resultado
-        lista[cantidad] = numero;
-        cantidad++;
-        iteraciones++;
-    }
+    ESCRIBIR "Los últimos 5 números son: "
+    PARA i DESDE inicio HASTA (cantidad - 1) HACER
+        ESCRIBIR lista[i]
+    FIN PARA
 
-    // 3. Mostrar resultados
-    cout << "\n--- Resultados ---" << endl;
-    cout << "Iteraciones totales: " << iteraciones << endl;
-
-    cout << "Los ultimos 5 numeros (vector): ";
-    
-    // Calculamos el índice de inicio para mostrar solo los últimos 5
-    int inicio = cantidad - 5;
-    
-    // Si la secuencia es muy corta (ej: entrada 2), evitamos índices negativos
-    if (inicio < 0) {
-        inicio = 0;
-    }
-
-    // Imprimimos el array desde la posición calculada
-    for (int i = inicio; i < cantidad; i++) {
-        cout << lista[i] << " ";
-    }
-    cout << endl;
-
-    return 0;
-}
+FIN
