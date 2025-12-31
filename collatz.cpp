@@ -1,4 +1,4 @@
-//Tarea 2, 11/12/25, cjtra Collatz
+//Tarea 2, 11/12/25, Conjetura Collatz
 
 #include <iostream>
 using namespace std;
@@ -70,3 +70,4 @@ int main() {
     return 0;
 
 }
+
