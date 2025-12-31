@@ -1,4 +1,4 @@
-//Tarea 2, 11/12/25, ctra Collatz
+//Tarea 2, 11/12/25, cjtra Collatz
 
 #include <iostream>
 using namespace std;
@@ -68,4 +68,5 @@ int main() {
     cout << endl;
 
     return 0;
+
 }
