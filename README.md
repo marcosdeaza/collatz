@@ -30,7 +30,7 @@ Si introducimos el número `3`, la secuencia generada es:
 
 ## 🧠 Pseudocódigo
 
-A continuación se describe la lógica del algoritmo diseñado:
+Aquí dejo un pequeño pseudocódigo verificado y tabulado :D
 
 ```text
 INICIO
